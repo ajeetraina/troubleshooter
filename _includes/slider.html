@@ -1,0 +1,38 @@
+{% if site.paginate %}
+    {% assign posts = paginator.posts | where_exp:"post","post.is_generated != true" %}
+{% else %}
+    {% assign posts = site.posts | where_exp:"post","post.is_generated != true" %}
+{% endif %}
+
+<div class="featured-posts-slider">
+    <div class="slider-wrapper">
+        {% for post in posts limit:4 %}
+        <div class="slider-item">
+            <a href="{{ post.url | prepend: site.baseurl }}" class="slider-link">
+                <div class="slider-image" style="background-image: url({{ post.image }})">
+                    <div class="slider-overlay"></div>
+                    <div class="slider-content">
+                        <span class="slider-category">{{ post.category }}</span>
+                        <h2 class="slider-title">{{ post.title }}</h2>
+                        <p class="slider-description">{{ post.description | strip_html | truncatewords:15 }}</p>
+                        <span class="slider-read-more">Read More</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="slider-controls">
+        <button class="slider-prev" aria-label="Previous slide">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-left"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        </button>
+        <div class="slider-dots">
+            {% for post in posts limit:4 %}
+            <button class="slider-dot {% if forloop.first %}active{% endif %}" aria-label="Go to slide {{ forloop.index }}"></button>
+            {% endfor %}
+        </div>
+        <button class="slider-next" aria-label="Next slide">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </button>
+    </div>
+</div>
