@@ -1,0 +1,200 @@
+// Featured Posts Slider
+.featured-posts-slider {
+  position: relative;
+  margin-bottom: rem(50px);
+  overflow: hidden;
+  
+  @include media(">=sm") {
+    margin-bottom: rem(80px);
+  }
+  
+  .slider-wrapper {
+    display: flex;
+    transition: transform 0.5s ease;
+    height: rem(450px);
+    
+    @include media("<sm") {
+      height: rem(300px);
+    }
+  }
+  
+  .slider-item {
+    flex: 0 0 100%;
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+  
+  .slider-link {
+    display: block;
+    height: 100%;
+    width: 100%;
+    color: white;
+    text-decoration: none;
+  }
+  
+  .slider-image {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+  }
+  
+  .slider-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.8) 100%);
+  }
+  
+  .slider-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: rem(30px);
+    box-sizing: border-box;
+    
+    @include media("<sm") {
+      padding: rem(20px);
+    }
+  }
+  
+  .slider-category {
+    display: inline-block;
+    background-color: $themeColor;
+    color: white;
+    font-size: rem(14px);
+    font-weight: 700;
+    padding: rem(5px) rem(10px);
+    text-transform: uppercase;
+    margin-bottom: rem(10px);
+    
+    @include media("<sm") {
+      font-size: rem(12px);
+      padding: rem(3px) rem(8px);
+    }
+  }
+  
+  .slider-title {
+    font-size: rem(36px);
+    font-weight: 800;
+    margin: rem(10px) 0;
+    line-height: 1.2;
+    color: white;
+    
+    @include media("<sm") {
+      font-size: rem(24px);
+    }
+  }
+  
+  .slider-description {
+    font-size: rem(18px);
+    line-height: 1.5;
+    margin-bottom: rem(20px);
+    color: rgba(255, 255, 255, 0.8);
+    
+    @include media("<sm") {
+      font-size: rem(14px);
+      margin-bottom: rem(10px);
+      display: none;
+    }
+  }
+  
+  .slider-read-more {
+    display: inline-block;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    font-size: rem(14px);
+    font-weight: 600;
+    padding: rem(8px) rem(15px);
+    border-radius: rem(20px);
+    transition: background-color 0.3s ease;
+    
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.3);
+    }
+    
+    @include media("<sm") {
+      font-size: rem(12px);
+      padding: rem(5px) rem(10px);
+    }
+  }
+  
+  .slider-controls {
+    position: absolute;
+    bottom: rem(20px);
+    right: rem(20px);
+    display: flex;
+    align-items: center;
+    z-index: 10;
+    
+    @include media("<sm") {
+      bottom: rem(10px);
+      right: rem(10px);
+    }
+  }
+  
+  .slider-prev,
+  .slider-next {
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: white;
+    width: rem(40px);
+    height: rem(40px);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+    
+    @include media("<sm") {
+      width: rem(30px);
+      height: rem(30px);
+      
+      svg {
+        width: rem(18px);
+        height: rem(18px);
+      }
+    }
+  }
+  
+  .slider-dots {
+    display: flex;
+    margin: 0 rem(10px);
+  }
+  
+  .slider-dot {
+    width: rem(12px);
+    height: rem(12px);
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    border: none;
+    margin: 0 rem(5px);
+    padding: 0;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    
+    &.active {
+      background-color: $themeColor;
+    }
+    
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.8);
+    }
+    
+    @include media("<sm") {
+      width: rem(8px);
+      height: rem(8px);
+      margin: 0 rem(3px);
+    }
+  }
+}
